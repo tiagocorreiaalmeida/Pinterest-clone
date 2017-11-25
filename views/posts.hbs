@@ -1,0 +1,26 @@
+{{> header user-posts="true"}}
+<main>
+    <div class="container">
+        <div class="row row-mansory">
+            {{#if posts}}
+            {{#each posts}}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-mansory">
+                <div class="card post">
+                    <img class="card-img-top" src="{{image_url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">{{description}}</h4>
+                        <p>
+                            <i class="fa fa-user-o" aria-hidden="true"></i> {{user_username}}</p>
+                        <a class="thumbUp">
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                            <span>{{likes}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
+    </div>
+</main>
+{{> footer}}

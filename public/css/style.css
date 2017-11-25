@@ -1,0 +1,101 @@
+:root{
+    --primary-color-1:#F7AA97;
+    --primary-color-2:#ED9282;
+    --primary-color-3:#DE7E73;
+    --primary-color-4:#CFAA9E;
+
+    --default-font-color:#333;
+
+    --color-white: #fff;
+
+    --primary-light-1:#f6f6f6;
+
+}
+
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: var(--default-font-color) !important;
+    background-color: var(--primary-color-3) !important;
+}
+
+main{
+    padding-top:78px;
+}
+
+button:focus,
+a:focus{
+    outline: none !important;
+}
+
+/* //////////////////////////////////// */
+/* Navbar */
+.navbar-default{ 
+    background-color: var(--color-white) !important;
+}
+
+.navbar-brand.navbar-brand-default{
+    color: #87314e;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 35px;
+}
+
+.nav-link.nav-link-default{
+    color: #87314e !important;
+    font-size: 1.1rem;
+    font-weight: 700;
+    
+}
+
+.custom-toggler{
+    cursor: pointer;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(246,246,246, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+/* //////////////////////////////////// */
+/* Modal */
+.modal-content-login{
+    max-width:400px;
+    background-color: var(--primary-light-1);
+}
+
+.github{
+    font-size:1.2rem;
+    padding:10px 0;
+    background-color:#323941;
+    border:none;
+}
+
+.github:hover{
+    background-color: #2b3137;
+}   
+
+.twitter{
+    font-size:1.2rem;
+    padding:10px 0;
+    background-color:#00aced;
+    border:none;
+}
+
+.twitter:hover{
+    background-color:#00a0dc;
+}
+
+/* //////////////////////////////////// */
+/* Posts */
+.post{
+    border:none;
+    box-shadow: 0 0.5rem 0.2rem rgba(0,0,0,.15);
+}
+
+/* //////////////////////////////////// */
+/* ADD POST */
+.preview{
+    display: none;
+}
