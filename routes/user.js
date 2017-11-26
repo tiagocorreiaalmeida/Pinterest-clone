@@ -15,10 +15,7 @@ router.get("/posts", authenticated, (req, res) => {
 });
 
 router.post("/addpost", authenticated, (req, res) => {
-    //validate image url missing
     let image_url = req.body.link.trim();
-    let hex = image_url.toString('hex',0,4);
-    console.log(hex);
     let description = req.body.description.trim();
     if (image_url && description) {
         Post.create({ user_id: req.user.id, user_name: req.user.username, image_url, description }).then((doc) => {

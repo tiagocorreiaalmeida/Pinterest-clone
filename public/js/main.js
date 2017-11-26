@@ -1,4 +1,5 @@
 
+"use strict"
 $("document").ready(() => {
     $('.row-mansory').masonry({
         itemSelector: '.col-mansory'
@@ -6,15 +7,26 @@ $("document").ready(() => {
 
     /////////////////////////////////////////////
     //APPEND ALERTS
-    let alertMessage = (type, icon, message) => {
-        if ($(".alerts").length > 0) {
-            $(".alerts").empty();
+    let alertMessage = (ele,type, icon, message) => {
+        if ($(`.${ele}`).length > 0) {
+            $(`.${ele}`).empty();
         }
         if (type) {
-            $(".alerts").append(`<div class="alert alert-${type}" role="alert">
+            $(`.${ele}`).append(`<div class="alert alert-${type}" role="alert">
             ${icon} ${message}
           </div>`);
         }
+    }
+
+    /////////////////////////////////////////////
+    //CHECK IMAGE
+    let checkImg = () => {
+        $(".img-thumbnail").on("error", function () {
+            let defaultLink = "https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg"
+            this.src = defaultLink;
+            $("#image-link").val(defaultLink);
+            alertMessage('alerts_modal','info', '<i class="fa fa-info-circle" aria-hidden="true"></i>', 'Invalid url changed to default');
+        });
     }
 
     /////////////////////////////////////////////
@@ -23,14 +35,16 @@ $("document").ready(() => {
         let input = $(this).val();
         $(".img-thumbnail").attr("src", input);
         $(".preview").css("display", "block").hide().fadeIn();
-        alertMessage();
-        $(".img-thumbnail").on("error", function () {
-            let defaultLink = "https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg"
-            this.src = defaultLink;
-            $("#image-link").val(defaultLink);
-            alertMessage('info', '<i class="fa fa-info-circle" aria-hidden="true"></i>', 'Invalid url changed to default');
-        });
+        alertMessage('alerts_modal');
+        checkImg();
+    }); 
+
+    /////////////////////////////////////////////
+    //ADD POST CHECK IMG STATE
+    $(".add").on("click", () => {
+        checkImg();
     });
+
 
     /////////////////////////////////////////////
     //CLEAR ADD POST INPUT
@@ -38,16 +52,17 @@ $("document").ready(() => {
         $("#image-link").val('');
         $("#description").val('');
         $(".preview").fadeOut();
-        alertMessage();
+        alertMessage('alerts_modal');
     });
 
+    /////////////////////////////////////////////
+    //DELETE POST
     $(".remove").on("click", function () {
         let id = $(this).attr("data-id");
-        console.log(id);
         $.getJSON(`/user/delete/${id}`, ((data) => {
             if (data) {
                 $(`[data-post="${id}"]`).fadeOut();
-                alertMessage('success', '<i class="fa fa-check-circle" aria-hidden="true"></i>', data.message);
+                alertMessage('alerts','success', '<i class="fa fa-check-circle" aria-hidden="true"></i>', data.message);
             }
         }));
     });
@@ -58,7 +73,7 @@ $("document").ready(() => {
         let id = $(this).attr("id");
         $.getJSON(`/like/${id}`, ((data) => {
             if (data) {
-                $(`#${id}`).children('span').text(data.change);
+                $(`[data-id="${id}"]`).text("likes "+data.change);
             }
         }));
     });

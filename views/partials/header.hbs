@@ -13,24 +13,20 @@
 
 <body>
   <nav class="navbar fixed-top navbar-expand-lg navbar-default">
-    <div class="container">
+    <div class="container container-nav">
       <a class="navbar-brand navbar-brand-default" href="/">
-        <i class="fa fa-home" aria-hidden="true"></i>
+        <img src="/img/brand.png" alt="brand logo">
       </a>
-      <button class="navbar-toggler collapsed custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse justify-content-end collapse" id="navbarNavAltMarkup">
+      <div class="justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <ul class="navbar-nav">
             {{#if isAuthenticated}}
-            <li class="nav-item {{#if user-posts}} active {{/if}}">
+            <li class="nav-item">
               <a class="nav-link nav-link-default" href="/user/posts">
                 <i class="fa fa-list" aria-hidden="true"></i>
               </a>
             </li>
-            <li class="nav-item {{#if user-addpost}} active {{/if}}">
+            <li class="nav-item">
               <a class="nav-link nav-link-default" href="#" data-toggle="modal" data-target="#createPost">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
               </a>
@@ -67,7 +63,7 @@
                     <div class="preview">
                         <img src="" alt="post image" class="img-thumbnail">
                     </div>
-                    <div class="alerts"></div>
+                    <div class="alerts_modal"></div>
                     <form method="POST" action="/user/addpost">
                     <div class="form-group mt-3">
                         <label for="image-link">
@@ -82,8 +78,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary add">Add Post</button>
-                    <button type="button" class="btn btn-secondary clear">Clear</button>
+                    <button type="submit" class="btn btn-primary add"><i class="fa fa-check" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-secondary clear"><i class="fa fa-eraser" aria-hidden="true"></i></button>
                 </div>
                 </form>
             </div>

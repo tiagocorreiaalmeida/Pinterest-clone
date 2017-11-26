@@ -1,29 +1,25 @@
-{{> header user-posts="true"}}
+{{> header}}
 <main>
-    <div class="container">
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">My posts</h1>
         <div class="row">
             <div class="col-md-12 alerts"></div>
         </div>
         <div class="row row-mansory">
-            {{#if posts}}
-            {{#each posts}}
+            {{#if posts}} {{#each posts}}
             <div class="col-lg-3 col-md-4 col-sm-6 col-mansory" data-post="{{_id}}">
                 <div class="card post">
                     <img class="card-img-top" src="{{image_url}}" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">{{description}}</h4>
-                        <p class="thumbUp">
-                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                            <span>{{likes}}</span>
-                        </p>
+                        <span class="likes">Likes {{likes}}</span>
                     </div>
-                    <div class="card-footer">
-                        <a href="#" data-id="{{_id}}" class="remove">Delete</a>
-                    </div>
+                    <a class="card-footer text-center remove" href="#" data-id="{{_id}}">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
-            {{/each}}
-            {{/if}}
+            {{/each}} {{/if}}
         </div>
     </div>
 </main>
