@@ -21,7 +21,7 @@ $("document").ready(() => {
     //CHECK IMAGE
     let checkImg = () => {
         $(".img-thumbnail").on("error", function () {
-            let defaultLink = "https://pplware.sapo.pt/wp-content/uploads/2017/06/google_fotos.jpg"
+            let defaultLink = "http://cdn4.wpbeginner.com/wp-content/uploads/2013/04/wp404error.jpg"
             this.src = defaultLink;
             $("#image-link").val(defaultLink);
             alertMessage('alerts_modal','info', '<i class="fa fa-info-circle" aria-hidden="true"></i>', 'Invalid url changed to default');
