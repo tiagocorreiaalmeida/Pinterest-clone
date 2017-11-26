@@ -1,3 +1,4 @@
+
 $("document").ready(() => {
     $('.row-mansory').masonry({
         itemSelector: '.col-mansory'
@@ -32,11 +33,33 @@ $("document").ready(() => {
     });
 
     /////////////////////////////////////////////
-    //CLEAR INPUT
+    //CLEAR ADD POST INPUT
     $(".clear").on("click", () => {
         $("#image-link").val('');
         $("#description").val('');
         $(".preview").fadeOut();
         alertMessage();
+    });
+
+    $(".remove").on("click", function () {
+        let id = $(this).attr("data-id");
+        console.log(id);
+        $.getJSON(`/user/delete/${id}`, ((data) => {
+            if (data) {
+                $(`[data-post="${id}"]`).fadeOut();
+                alertMessage('success', '<i class="fa fa-check-circle" aria-hidden="true"></i>', data.message);
+            }
+        }));
+    });
+
+    /////////////////////////////////////////////
+    //LIKE ON POST
+    $(".thumbUp.active").on("click", function () {
+        let id = $(this).attr("id");
+        $.getJSON(`/like/${id}`, ((data) => {
+            if (data) {
+                $(`#${id}`).children('span').text(data.change);
+            }
+        }));
     });
 });

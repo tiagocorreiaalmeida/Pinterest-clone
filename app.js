@@ -11,7 +11,8 @@ const express = require("express"),
 const mongoose = require("./config/mongoose"),
     passportConfig = require("./controllers/passport"),
     auth = require("./routes/auth"),
-    user = require("./routes/user");
+    user = require("./routes/user"),
+    publicPath = require("./routes/public");
 
 passportConfig(passport);
 
@@ -43,12 +44,9 @@ app.set("view engine","hbs");
 
 hbs.registerPartials(__dirname+"/views/partials");
 
-app.get("/",(req,res)=>{
-    res.render("index");
-});
-
 app.use("/auth",auth);
 app.use("/user",user);
+app.use("/",publicPath);
 
 app.listen(port,()=>{
     console.log(`Running on port ${port}`);
