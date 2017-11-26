@@ -14,7 +14,7 @@ router.get("", (req, res) => {
     });
 });
 
-router.get("/like/:id",authenticated,(req, res) => {
+router.get("/like/:id", authenticated, (req, res) => {
     let id = req.params.id;
     let change = 0;
     if (ObjectID.isValid(id)) {
@@ -40,6 +40,17 @@ router.get("/like/:id",authenticated,(req, res) => {
             console.log(e);
         });
     }
+});
+
+router.get("/user/:id", (req, res) => {
+    let id = req.params.id;
+    Post.find({ user_id: id }).then((posts) => {
+        if (posts) {
+            res.render("userposts", { posts });
+        }else{
+            res.redirect("/");
+        }
+    });
 });
 
 module.exports = router;
