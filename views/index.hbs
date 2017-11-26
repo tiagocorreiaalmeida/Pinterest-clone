@@ -1,7 +1,7 @@
 {{> header}}
 <main>
     <div class="container mt-5">
-        <h1 class="text-center mb-5">Pinterest Clone</h1>
+        <h1 class="text-center mb-5 page-title uppercase"><i class="fa fa-pinterest" aria-hidden="true"></i> Pinterest Clone</h1>
         <div class="row row-mansory">
             {{#if posts}} {{#each posts}}
             <div class="col-lg-3 col-md-4 col-sm-6 col-mansory" data-post="{{_id}}">
@@ -14,9 +14,9 @@
 
                         </a>
                     </div>
-
+                    
                     <div class="card-body">
-                        <h4 class="card-title">{{description}}</h4>
+                        <h4 class="card-title"><i class="fa fa-bookmark" aria-hidden="true"></i> {{description}}</h4>
                         <a href="/user/{{user_id}}" class="user">
                             <i class="fa fa-user" aria-hidden="true"></i> {{user_name}}</a>
                         <span class="likes" data-id="{{_id}}">Likes {{likes}}</span>

@@ -1,6 +1,7 @@
 {{> header}}
 <main>
     <div class="container mt-5">
+        <h1 class="mb-5 page-title lower-case"><i class="fa fa-user" aria-hidden="true"></i> {{posts.0.user_name}}</h1>
         <div class="row row-mansory">
             {{#if posts}} {{#each posts}}
             <div class="col-lg-3 col-md-4 col-sm-6 col-mansory" data-post="{{_id}}">
@@ -15,8 +16,6 @@
 
                     <div class="card-body">
                         <h4 class="card-title">{{description}}</h4>
-                          <a href="/user/{{user_id}}" class="user">
-                            <i class="fa fa-user" aria-hidden="true"></i> {{user_name}}</a>
                         <span class="likes" data-id="{{_id}}">Likes {{likes}}</span>
                     </div>
                 </div>

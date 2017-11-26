@@ -50,7 +50,9 @@ router.get("/user/:id", (req, res) => {
         }else{
             res.redirect("/");
         }
-    });
+    }).catch((e)=>{
+        console.log(e);
+    })
 });
 
 module.exports = router;

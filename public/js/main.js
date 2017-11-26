@@ -1,4 +1,3 @@
-
 "use strict"
 $("document").ready(() => {
     $('.row-mansory').masonry({
